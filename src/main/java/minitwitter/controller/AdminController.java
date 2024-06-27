@@ -54,6 +54,19 @@ public class AdminController {
      */
     public Collection<Group> getAllGroups() { return groups.values(); }
     
+    
+    public List<TwitterComponent> getAllElements() {
+        List<TwitterComponent> elementList = new ArrayList<>();
+        elementList.addAll(groups.values());
+        elementList.addAll(users.values());
+        return elementList;
+    }
+    public TwitterComponent getChildFromID(String id) {
+        Map<String, TwitterComponent> allChildren = new HashMap<>();
+        allChildren.putAll(users);
+        allChildren.putAll(groups);
+        return allChildren.get(id);
+    }
     public User getUserFromID(String id) { return users.get(id); }
     public Group getGroupFromID(String id) { return groups.get(id); }
     public List<String> getFollowingIDs(String followerID) {  return getUserFromID(followerID).getFollowingIDs(); }

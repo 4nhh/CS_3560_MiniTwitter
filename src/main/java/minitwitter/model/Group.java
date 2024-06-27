@@ -59,14 +59,8 @@ public class Group implements TwitterComponent {
     public DefaultMutableTreeNode createTreeNode() {
         DefaultMutableTreeNode groupNode = new DefaultMutableTreeNode(this.id, true);
         for (String childID : getChildren()) {
-            TwitterComponent child = AdminController.getInstance().getUserFromID(childID);
-            if (child == null) {
-                child = AdminController.getInstance().getGroupFromID(childID);
-                child.createTreeNode();
-            }
-            if (child != null) {
+            TwitterComponent child = AdminController.getInstance().getChildFromID(childID);
                 groupNode.add(child.createTreeNode());
-            }
         }
         return groupNode;
     }
