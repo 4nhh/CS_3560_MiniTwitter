@@ -8,6 +8,18 @@ It is an exercise of four design patterns: Singleton, Composite, Observer, and V
 The __Singleton__ pattern was applied to the **AdminController** class. As the class controls the application's data and interactions between
 the GUI and the objects, it was important that access to an ``AdminController`` would be centralized to a single instance.
 
+- **Private instantiation**:
+```
+private AdminController() {        
+    users = new HashMap<>();
+    groups = new HashMap<>();
+    userViews = new HashMap<>();
+    statsViews = new HashMap<>();
+    root = new Group("Root", null);
+    groups.put("Root", root);
+}
+```
+- **Public access to instance**:
 ```
 public static AdminController getInstance() {
     if (instance == null) { instance = new AdminController(); }
@@ -28,7 +40,7 @@ public interface TwitterComponent {
 ```
 The pattern allows the objects in the hierarchy to be treated similarly, *regardless of type*, which was especially useful when constructing the tree model.
 
-In ``Group.java``:
+- In ``Group.java``:
 ```
 public DefaultMutableTreeNode createTreeNode() {
   DefaultMutableTreeNode groupNode = new DefaultMutableTreeNode(this.id, true);
@@ -39,7 +51,7 @@ public DefaultMutableTreeNode createTreeNode() {
   return groupNode;
 }
 ```
-In ``User.java``:
+- In ``User.java``:
 ```
 public DefaultMutableTreeNode createTreeNode() {
     return new javax.swing.tree.DefaultMutableTreeNode(this.id, false);
