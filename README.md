@@ -38,7 +38,7 @@ public interface TwitterComponent {
     DefaultMutableTreeNode createTreeNode();   
 }
 ```
-The pattern allows the objects in the hierarchy to be treated similarly, *regardless of type*, which was especially useful when constructing the tree model.
+The pattern allows the objects in the hierarchy to be treated similarly, *regardless of type*, which was especially relevant to constructing the tree model.
 
 - In ``Group.java``:
 ```
