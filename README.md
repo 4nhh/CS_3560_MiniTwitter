@@ -6,7 +6,7 @@ It is an exercise of four design patterns: Singleton, Composite, Observer, and V
 
 ## Singleton
 The __Singleton__ pattern was applied to the **AdminController** class. As the class controls the application's data and interactions between
-the GUI and the objects, it was important that all calls to an ``AdminController`` would be directed to a consistent, singular instance thereof.
+the GUI and the objects, it was important that access to an ``AdminController`` would be centralized to a single instance.
 
 ```
 public static AdminController getInstance() {
